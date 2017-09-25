@@ -1,0 +1,24 @@
+{% extends 'ShelfLife/base.html' %}
+
+{% block body %}
+    <div class="page header">
+        <h2>{{ name }} Likes : </h2>
+        <br>
+    </div>
+    <div>
+        <ul class="nav nav-pills nav-stacked" style="margin-bottom:30px">
+            {% for i in Connections %}
+            <li><span class="glyphicon glyphicon-ok"></span> &nbsp; {{ i.thing }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <h4 role="form"><a data-toggle="collapse" href="#likes">Add more Things here</a></h4>
+    <form method="post" action="{% url 'makeConnections' id %}" id="likes" class="collapse">
+        {% csrf_token %}
+        <div class="input-group" style="margin-bottom:10px">
+            <span class="input-group-addon">Enter Favorite items seperated by spaces </span>
+            <input class="form-control" placeholder="Enter Things Here" name="like">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

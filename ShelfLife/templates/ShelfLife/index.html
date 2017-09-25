@@ -1,0 +1,55 @@
+<!-- main html file -->
+{% extends 'ShelfLife/base.html' %}
+
+
+{% block title %}
+    Peoples
+{% endblock %}
+
+{% block style %}
+    <style>
+        .vertical-center{
+            display: flex;
+            align-items: center;
+        }
+        .jumbotron{
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+
+{% block usr %}
+    <a href="#usr" data-toggle="collapse" class="btn btn-primary btn-lg">Users</a>
+    <div id="usr" class="collapse in">
+    <div class="row">
+            {% for i in all %}
+        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+            <div class="jumbotron horizontal-center">
+                <img src="{{ i.image }}" title="{{ i.name }}" width="200" height="200" style="margin-right:10px"><br>
+                <h3 class="caption"><a href="{% url 'details' i.pk %}"> {{ i.name }}</a></h3><br>
+                <a class="btn btn-danger btn-md" href="{% url 'delete' i.pk %}">
+                    <span class="glyphicon glyphicon-trash"></span></a>
+            </div>
+        </div>
+            {% endfor %}
+        <a style="margin-bottom:40px" class="btn btn-default btn-lg" href="{% url 'add' %}"><span class="glyphicon glyphicon-plus"></span> Add User</a>
+    </div>
+    </div>
+{% endblock %}
+
+{% block things %}
+    <a data-toggle="collapse" href="#things" class="btn btn-primary btn-lg">Things</a>
+    <div id="things" class="collapse">
+    <div class="row">
+        {% for i in thing %}
+            <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                <div class="jumbotron">
+                    <h3>{{ i.name }}</h3><br>
+                    <a class="btn btn-danger btn-md" href="{% url 'thingdel' i.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}

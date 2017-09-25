@@ -1,0 +1,22 @@
+{% extends 'ShelfLife/base.html' %}
+
+{% load staticfiles %}
+<link rel="stylesheet" href="ShelfLife/form.css">
+
+{% block body %}
+    <h1 title="topic">Adding User</h1>
+
+    <form action="{% url 'save' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group input-group-lg" style="margin-bottom:10px">
+            <span class="input-group-addon">Name:</span>
+            <input type="text" placeholder="Enter your name" class="form-control" name="names">
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Image URL:</span>
+            <input type="text" placeholder="Enter URL" class="form-control" name="image">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg" name="Add">Submit</button>
+    </form>
+{% endblock %}
