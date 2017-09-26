@@ -20,7 +20,6 @@
 
 
 {% block usr %}
-    <a href="#usr" data-toggle="collapse" class="btn btn-primary btn-lg">Users</a>
     <div id="usr" class="collapse in">
     <div class="row">
             {% for i in all %}
@@ -33,13 +32,11 @@
             </div>
         </div>
             {% endfor %}
-        <a style="margin-bottom:40px" class="btn btn-default btn-lg" href="{% url 'add' %}"><span class="glyphicon glyphicon-plus"></span> Add User</a>
     </div>
     </div>
 {% endblock %}
 
 {% block things %}
-    <a data-toggle="collapse" href="#things" class="btn btn-primary btn-lg">Things</a>
     <div id="things" class="collapse">
     <div class="row">
         {% for i in thing %}
